@@ -1,0 +1,19 @@
+<h1>{{l}}</h1>
+<h1>{{l[1]}}</h1>
+<h1>{{d}}</h1>
+<h1>{{d['hello']}}</h1>
+<ol>
+  {% for k in d.keys() %}
+  <li>{{ d[k]}}</li>
+  {%endfor%}
+</ol>
+<h1>Welcome
+{% if name %}
+  {{name}}
+  {% else %}
+  un-named one
+  {% endif %}
+</h1>
+<h1>Your lucky number is {{num}} </h1>
+
+No, really, it's {{num}}
