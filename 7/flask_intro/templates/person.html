@@ -1,0 +1,7 @@
+<h1>The Person Page</h1>
+
+{% if lastname and firstname %}
+<h1>Welcome {{lastname}}, {{firstname}} </h1>
+{%else %}
+<h1>Invalid landing page</h1>
+{%endif%}

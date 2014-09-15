@@ -3,10 +3,19 @@
 <h1>{{d}}</h1>
 <h1>{{d['hello']}}</h1>
 <ol>
-  {% for k in d.keys() %}
-  <li>{{ d[k]}}</li>
+  {% for k in d %}
+  <li> d[{{k}}] is  {{ d[k]}}</li>
   {%endfor%}
 </ol>
+
+<ul>
+  {% for item in l %}
+  <li> {{ item}} </li>
+  {%endfor%}
+</ul>
+
+
+
 <h1>Welcome
 {% if name %}
   {{name}}

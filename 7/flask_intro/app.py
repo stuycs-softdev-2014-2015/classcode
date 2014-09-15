@@ -21,6 +21,16 @@ def oldhelp():
 """
     return p
 
+
+@app.route("/p")
+@app.route("/p/<lastname>")
+@app.route("/p/<lastname>/<firstname>")
+def person(lastname=None,firstname=None):
+    return render_template("person.html"
+                           ,lastname=lastname
+                           ,firstname=firstname)
+
+
 @app.route("/about")
 def about():
     return "<h1>this is the about page</h1>"
