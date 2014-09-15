@@ -1,0 +1,10 @@
+<h1>
+  This is the person page
+</h1>
+
+{% if lastname and firstname %}
+<h2>Welcome {{lastname}}, {{firstname}} </h2>
+{% else %}
+<h2>This is not a valid landing page</h2>
+{% endif %}
+

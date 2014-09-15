@@ -24,6 +24,15 @@ def about():
 """
     return s
 
+
+@app.route("/p")
+@app.route("/p/<lastname>")
+@app.route("/p/<lastname>/<firstname>")
+def person(lastname=None,firstname=None):
+    return render_template("person.html"
+                           ,lastname=lastname
+                           ,firstname=firstname)
+
 @app.route("/random")
 def randomnumber():
     import random
