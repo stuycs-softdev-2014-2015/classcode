@@ -1,7 +1,9 @@
 <h1>{{l}} -- {{l[0]}}</h1>
 <h1>{{d}} -- {{d[3]}}</h1>
-<h1>Welcome
-{% if name %}
+<button><a href="/about">about</a></button>
+<button><a href="/help">help</a></button>
+
+<h1>Welcome{% if name %}
   {{name}}
 
   {% else %}
@@ -9,6 +11,18 @@
 
   {% endif %}
 </h1>
+
+<ol>
+  {% for k in d %}
+  <li>{{k}} {{d[k]}}</li>
+  {% endfor %}
+</ol>
+
+<ul>
+  {% for k in l %}
+  <li>{{k}} {{l[k]}}</li>
+  {% endfor %}
+</ul>
 
 <h2>Your lucky number is {{num}}</h2>
 

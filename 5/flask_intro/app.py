@@ -35,6 +35,13 @@ def randomnumber():
                            l=[1,2,3,4,5],
                            d={'a':1,'two':2,3:'hello'})
 
+@app.route("/person/")
+@app.route("/person/<lastname>")
+@app.route("/person/<lastname>/<firstname>")
+def person(lastname=None,firstname=None):
+    return render_template("person.html"
+                           ,lastname=lastname
+                           ,firstname=firstname)
 
 @app.route("/home")
 @app.route("/") 
@@ -44,5 +51,5 @@ def home():
 if __name__=="__main__":
     app.debug=True
     app.run() 
-
+    #app.run(host="0.0.0.0",port=8888)
     
