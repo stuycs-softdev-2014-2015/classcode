@@ -11,7 +11,11 @@
       <input type="text" name="uname">
       <input type="text" name="pword">
       <p>
-	<input type="submit" name="b" value="login">
+	{% for item in l %}
+	<input type="checkbox" name="fruit" value={{item}}>{{item}}
+	{% endfor %}
+	<p>
+	  <input type="submit" name="b" value="login">
 	<input type="submit" name="b" value="cancel">
       
     </form>

@@ -5,15 +5,18 @@ app=Flask(__name__)
 
 @app.route("/login",methods=["GET","POST"])
 def login():
+    l = ['apple','orange','banana','kiwi']
     if request.method=="GET":
-        return render_template("login.html")
+        return render_template("login.html",l=l)
     else:
+        print request.form["fruit"]
+        print request.form.getlist("fruit")
         button = request.form['b']
         uname  = request.form['uname']
         pword  = request.form['pword']
         valid_user = utils.authenticate(uname,pword)
         if button=="cancel" or not(valid_user):
-            return render_template("login.html")
+            return render_template("login.html",l=l)
         else:
             return render_template("welcome.html",
                                    name=uname)
