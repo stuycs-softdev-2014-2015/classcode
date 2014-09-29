@@ -1,4 +1,3 @@
-import doctest
 
 
 def add2(a,b):
@@ -10,7 +9,8 @@ def add2(a,b):
     >>> add2(3,4)
     7
     """
-    return a+b
+    return a-b
 
 if __name__=="__main__":
+    import doctest
     doctest.testmod()
