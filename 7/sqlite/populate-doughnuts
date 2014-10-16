@@ -1,0 +1,8 @@
+
+create table doughnuts (name text, qty integer, price real);
+
+insert into doughnuts values ("jelly",10,3.40);
+insert into doughnuts values ("sprinkles",20,2.50);
+insert into doughnuts values ("glazed",15,4.00);
+insert into doughnuts values ("plain",13,2.25);
+
