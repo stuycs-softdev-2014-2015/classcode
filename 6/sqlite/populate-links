@@ -1,0 +1,25 @@
+create table people (name text, age integer, id integer);
+create table classes (code text, grade integer, id integer);
+
+insert into people values ("homer",40,1);
+insert into people values ("marge",40,2);
+insert into people values ("bart",10,3);
+insert into people values ("lisa",8,4);
+insert into people values ("maggie",4,5);
+insert into people values ("nelson",16,6);
+insert into people values ("kierney",19,7);
+insert into people values ("ralph",8,8);
+
+insert into classes values ("ENG",55,8);
+insert into classes values ("APCS",85,1);
+insert into classes values ("APCS",95,4);
+insert into classes values ("APCS",80,3);
+insert into classes values ("APCS",92,7);
+insert into classes values ("APCS",100,5);
+insert into classes values ("CALC",93,5);
+insert into classes values ("CALC",74,6);
+insert into classes values ("DRAFTING",65,1);
+insert into classes values ("DRAFTING",65,2);
+insert into classes values ("DRAFTING",65,3);
+insert into classes values ("DRAFTING",65,4);
+insert into classes values ("DRAFTING",65,5);
