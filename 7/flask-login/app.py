@@ -23,10 +23,7 @@ def login():
         return render_template("login.html")
     else:
         session['username']=txt
-        if 'nextpage' in session:
-            n = session['nextpage']
-        else:
-            n='/'
+				n = session.pop('nextpage','/')
         return redirect(n)
 
 @app.route("/logout")
