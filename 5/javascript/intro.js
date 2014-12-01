@@ -48,3 +48,49 @@ var addItem = function(text) {
 }
 
 
+var red = function() {
+		var listitems = document.getElementsByTagName('li');
+		for ( var i = 0 ; i < listitems.length ; i++) {
+				listitems[i].classList.add('red');
+		}
+}
+
+var stripe = function() {
+		var listitems = document.getElementsByTagName('li');
+		for ( var i = 0 ; i < listitems.length ; i++) {
+				if (i%2==0) {
+						listitems[i].classList.add('red');
+				} else {
+						listitems[i].classList.add('blue');
+				}
+		}
+}
+
+var liCallback = function(e) {
+		console.log(e);
+		console.log(this);
+		this.classList.add('red');
+}
+
+var buttonCallback = function(e) {
+		console.log(e);
+		console.log(this);
+}
+
+var thelist = document.getElementById("thelist");
+var litems = thelist.children;
+for (var i = 0; i < litems.length; i++){
+		litems[i].addEventListener('click',liCallback);
+		litems[i].addEventListener('mouseover',function (e) {
+				this.classList.toggle('green');
+		});
+		litems[i].addEventListener('mouseout',function (e) {
+				this.classList.toggle('blue');
+		});
+}
+
+
+
+
+b.addEventListener('click',buttonCallback);
+
