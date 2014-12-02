@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<style>
+.red {color: #ff0000;}
+.green {color:#00ff00;}
+.blue {color:0000ff;}
+.flip {position:absolute; left:300px; top:300px}
+.img {height:50px;height:50px;}
+</style>
+
+
+
+<div class="flip">
+  <img id="thluffy" class="img" src="thluffy.png">
+</div>
+
+
+<div>
+<input type=submit id="start" value="Start"></submit>
+<input type=submit id="stop" value="Stop"></submit>
+</div>
+
+
+
+<script>
+var mouseX;
+var mouseY;
+
+ window.addEventListener('mousemove',function(e){
+     mouseX=e.pageX;
+     mouseY=e.pageY;
+   }); 
+
+function flip(e) {
+  var thluffy=document.getElementById("thluffy");
+
+  if (mouseX<300) {
+     thluffy.src="thluffy-left.png";
+  } else {
+     thluffy.src="thluffy-right.png";
+   }
+}
+
+
+var myevent;
+function startit() {
+ myevent = setInterval(flip,100);
+}
+function stopit() {
+	window.clearTimeout(myevent);
+}
+
+ document.getElementById("start").addEventListener('click',startit);
+ document.getElementById("stop").addEventListener('click',stopit);
+
+</script>
