@@ -45,6 +45,7 @@ var add5=makeAdder(5);
 
 var makeCounter = function() {
 		var i = 0;
+
 		var get = function() {
 				return i;
 		};
@@ -58,3 +59,21 @@ var makeCounter = function() {
 				set : function(x) { i = x;}
 		};
 };
+
+
+var myLib = (function() {
+		var i = 0;
+
+		var get = function() {
+				return i;
+		};
+
+		return {
+				x : 'some arbitrary value',
+				fx : function() { return this.x;},
+				get : get, 
+				inc : function() { i=i+1;},
+				dec : function() { i=i-1;},
+				set : function(x) { i = x;}
+		};
+})();
