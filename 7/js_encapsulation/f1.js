@@ -57,3 +57,20 @@ var makeCounter = function() {
 				setx : function(v) { this.x = v;}
 		};
 };		
+
+
+var myLib = (function() {
+		var i = 0;
+		var get = function() {
+				return i;
+		};
+		
+		return {
+				x : 'something in the dictionary',
+				get : get,
+				set : function(x) { i = x; },
+				inc : function() { i = i + 1;},
+				dec : function() {i = i - 1;},
+				setx : function(v) { this.x = v;}
+		};
+})()   ;		
