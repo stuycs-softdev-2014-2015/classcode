@@ -1,0 +1,21 @@
+{
+  "name": "js_libs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stuycs-softdev/classcode",
+  "authors": [
+    "Mike Zamansky <zamansky@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2"
+  }
+}
