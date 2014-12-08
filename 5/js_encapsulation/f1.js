@@ -35,7 +35,7 @@ var makeAdder = function(n){
 
 var makeCounter = function() {
 		var i = 0;
-		var get =  function() { return i;},
+		var get =  function() { return i;};
 		return { x : "some value",
 						 get : get,
 						 inc : function() {i=i+1;},
@@ -44,4 +44,18 @@ var makeCounter = function() {
 						 fx : function() { console.log(this.x);} // this to get to the local
  					 };
 };
+
+
+var myLib = (function() {
+		var i = 0;
+		var get =  function() { return i;};
+		return { x : "some value",
+						 get : get,
+						 inc : function() {i=i+1;},
+						 dec : function() { i = i - 1;},
+						 set : function(x) {i = x;},
+						 fx : function() { console.log(this.x);} // this to get to the local
+ 					 };
+})();
+
 
