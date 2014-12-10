@@ -1,5 +1,6 @@
 from flask import Flask,request,url_for,redirect,render_template
-import time
+import time,json
+from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
 
@@ -10,6 +11,8 @@ def index():
 @app.route("/getstuff")
 def getstuff():
     print "In GetStuff"
+    time.sleep(5)
+    print "returning from getstuff"
     return "stuff"
 
 @app.route("/getslow")
@@ -22,11 +25,21 @@ def getslow():
 @app.route("/getfast")
 def getfast():
     print "in getfast"
-    time.sleep(5)
     print "returning from getfast"
     return "fast stuff"
 
+@app.route("/upcase")
+def upcase():
+    data = request.args.get('data',"nothing here")
+    print data
+    result = {"original":data,
+              "result":data.upper()
+    }
+    return json.dumps(result)
 
 if __name__=="__main__":
    app.debug=True
+   app.config['SECRET_KEY'] = '<replace with a secret key>'
+
+   toolbar = DebugToolbarExtension(app)
    app.run(host="0.0.0.0",port=8000)
