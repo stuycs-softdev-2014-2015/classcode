@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{%block topbar%}
+<h1>Quotinator</h1>
+{%endblock topbar%}
+{% block content %}
+<style>
+ .quotebox {height:200px;
+						width:80%;
+						padding:20px;
+						
+						border-width:2px;
+						border-color:red;
+						border-style:solid;}
+</style>
+<div id="rquote" class="quotebox"></div>
+<div id="aquote" class="quotebox"></div>
+<button id="add">add</button>
+<button id="clear">clear</button>
+<script src="static/script.js"></script>
+{%endblock content%}

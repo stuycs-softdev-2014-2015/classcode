@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+		<head>
+				{%block head %}
+				<style>
+				 .green {color:#00ff00;}
+				</style>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-rc2/jquery.js"></script>
+				<title>{%block title%}The title of my awesome app{%endblock title%}</title>
+				{%endblock head%}
+		</head>
+		<body>
+				{%block topbar%}<h1>Topbar for the app</h1>{%endblock topbar%}
+				{%block content%}
+				main content
+				{%endblock content%}
+				{%block footer %}
+				<footer>
+				<hr>
+				<h4>The footer for my awesome company</h4>
+				</footer>
+				{%endblock footer%}
+		</body>
+</html>
