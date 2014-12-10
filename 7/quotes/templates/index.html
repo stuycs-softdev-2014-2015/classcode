@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{%block title%}Quotinator{%endblock title%}
+
+{%block header%}<h1>Quotinator</h1>{%endblock header%}
+
+{%block content%}
+<style>
+ .quotediv { height:200px;
+						 width:80%;
+						 padding:20px;
+						 border-width:2px;
+						 border-color:red;
+						 border-style:solid;
+ }
+</style>
+
+<div id="rquote" class="quotediv"></div>
+<div id="aquote" class="quotediv"></div>
+<button id="add">add</button>
+<button id="clear">clear</button>
+<script src="static/script.js"></script>
+
+{%endblock content%}

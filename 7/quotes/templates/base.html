@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+		<head>
+				{%block head %}
+
+				<style>
+				 .green {color:#00ff00;}
+				</style>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-rc2/jquery.js"></script>
+				<title>{%block title%}My web page{%endblock title%}</title>
+
+				{% endblock head %}
+		</head>
+		<body>
+				{%block header%}
+				<h1>The awesome header</h1>
+				{%endblock header%}
+				{%block content %}
+				The page content
+				{%endblock %}
+				{%block footer %}
+				<hr>
+				<h4>The footer that references my awesome company</h4>
+				{%endblock footer%}
+		</body>
+</html>
