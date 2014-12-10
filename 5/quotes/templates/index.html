@@ -3,8 +3,22 @@
 {% block title %}A new title {%endblock %}
 
 {%block content %}
+<style>
+ .quotebox { height:200px;
+						 border-width:2px;
+						 border-color:red;
+						 border-style:solid;}
+</style>
 
-The real page
+<div id="rquote" class="quotebox">
+</div>
 
+<div id="aquote" class="quotebox">
+</div>
+
+<button id="add">add</button>
+<button id="clear">clear</button>
+
+<script src="static/script.js"></script>
 {% endblock %}
 
