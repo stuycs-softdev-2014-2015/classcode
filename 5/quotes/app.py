@@ -8,7 +8,7 @@ def index():
 
 
 @app.route("/base")
-def index():
+def base():
     return render_template("base.html")
 
 
