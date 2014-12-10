@@ -15,6 +15,15 @@ var go = function() {
 		console.log("back");
 };
 
+var result;
+var params = function() {
+		$.getJSON("/upcase",{data:"a lowercase string"},function(d){
+				console.log(d);
+				result = d;
+		});
+
+};
+
 console.log("HELLO");
 
 
