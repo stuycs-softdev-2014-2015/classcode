@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+		<head>
+		</head>
+		<body>
+				<div id="demo">
+						Hello
+				</div>
+				<script>
+				 var showposition = function(p){
+						 var x = document.getElementById("demo");
+						 x.innerHTML = "Lat: "+p.coords.latitude+"<br>Long: "+p.coords.longitude;
+						 var img = new Image();
+						 img.src="http://maps.googleapis.com/maps/api/staticmap?center="+p.coords.latitude+","+p.coords.longitude+"&zoom=13&size=300x300&sensor=false";
+						 x.appendChild(img);
+				 }
+				 
+				 var go = function() {
+						 if ("geolocation" in navigator){
+								 console.log("Geolocation");
+								 navigator.geolocation.getCurrentPosition(showposition);
+						 } else {
+								 console.log("No Geolocation");
+						 }
+				 }
+				</script>
+		</body>
+		
+</html>
