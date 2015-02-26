@@ -69,7 +69,35 @@ avg = Math.floor(result.reduce(function(a,b){return a+b;})/result.length);
 //console.log(result);
 //console.log(avg);
 
+/*
 var r = _.filter(_.map(_.pluck(scores,"eng"),
 											 function(item){return parseInt(item);}),
-								 function(item){return !isNaN(item);})
+								 function(item){return !isNaN(item);});
+ */
+var r = _.chain(scores)
+				.filter(function(x){return parseInt(x.num)>800;})
+				.pluck("eng")
+				.map(function(x){return parseInt(x);})
+				.filter(function(x){return !isNaN(x);})
+				.value();
+
 console.log(r);
+
+
+var add2 = function(a,b){
+		return a+b;
+};
+
+var add3 = function(a,b,c){
+		return a+b+c;
+};
+
+
+var cmap = _.curryRight(_.map,2);
+var cfilter = _.curryRight(_.filter,2);
+
+var convert = _.compose(cfilter(function(x){return !isNaN(x);}),
+												cmap(function(x){return parseInt(x);}),
+												cmap(function(x){return x.math;}));
+
+
