@@ -104,3 +104,7 @@ var convert = _.compose(
 		cfilter(function(x){return parseInt(x.num)>800;})
 
 );
+
+var printargs = function() {
+		console.log(arguments);
+};

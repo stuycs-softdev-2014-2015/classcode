@@ -1,4 +1,5 @@
 
+
 var map = function(l,f){
 		var result=[];
 		for (var i = 0; i < l.length; i++){
@@ -67,7 +68,7 @@ var r;
 r = _.pluck(scores,"math");
 r = _.map(r,function(x){return parseInt(x);});
 r = _.filter(r,function(x){return !isNaN(x);});
-console.log(r);
+//console.log(r);
  */
 
 /*
@@ -81,7 +82,7 @@ r = _.chain(scores).
 		map(function(x){return parseInt(x);}).
 		filter(function(x){return !isNaN(x);}).
 		value();
-console.log(r);
+//console.log(r);
 
 add2 = _.curry(function add2(a,b){
 		return a+b;
@@ -107,4 +108,49 @@ var convert = _.compose(
 );
 
 
+
+var printargs = function() {
+		console.log(arguments);
+};
+
+var mtns = [20,30,33,40,50,40,20,70,50,110,45];
+var difflist = _.zip(mtns,mtns.slice(1));
+/*
+difflist = _.take(difflist,difflist.length-1);
+var diffs = _.map(difflist,function(item){
+		return Math.abs(item[1]-item[0]);
+});
+var bigdiffs = _.filter(diffs,function(x){return x>=30;});
+console.log(bigdiffs);
+ */
+r = _.chain(_.zip(mtns,mtns.slice(1)))
+		.take(difflist.length-1)
+		.map(function(item){
+				return Math.abs(item[1]-item[0]);
+		})
+		.filter(function(x){return x>=30;})
+		.value();
+
+// console.log(r);
+
+var l = [];
+for (var i = 0; i < 20; i++){
+		l.push(Math.floor(Math.random()*100));
+}
+console.log(l);
+
+var qsort = function(l){
+		if (l.length <=1)
+				return l;
+		var pivot = l[0];
+		l=l.slice(1);
+		/*
+		var lower = _.filter(l,function(item){return item<=pivot;});
+		var upper = _.filter(l,function(item){return item>pivot;});
+		 */
+		var p = _.partition(l,function(item){return item <= pivot;});
+		return qsort(p[0]).concat(pivot).concat(qsort(p[1]));
+};
+
+console.log(qsort(l));
 

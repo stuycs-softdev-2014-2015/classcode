@@ -101,3 +101,40 @@ var convert = _.compose(cfilter(function(x){return !isNaN(x);}),
 												cmap(function(x){return x.math;}));
 
 
+
+var printargs = function(){
+		console.log(arguments);
+};
+
+
+var mnts = [20,30,33,40,50,40,20,70,50,10,45];
+
+
+var dlist = _.zip(mnts,
+									mnts.slice(1));
+
+dlist = _.take(dlist,dlist.length-1);
+var diffs = _.map(dlist,function(item){
+		return Math.abs(item[1]-item[0]);
+});
+
+var bigdiffs = _.filter(diffs,function(n){return n>=30;});
+
+var l = [];
+for (var i = 0 ; i < 20; i++){
+		l.push(Math.floor(Math.random()*100));
+};
+console.log(l);
+
+var qsort = function(l){
+		if (l.length <= 1)
+				return l;
+		var pivot = l[0];
+		l = l.slice(1);
+		var lower = _.filter(l,function(item){return item<=pivot;});
+		var upper = _.filter(l,function(item){return item>pivot;});
+		return qsort(lower).concat(pivot).concat(qsort(upper));
+}
+
+var l2 = qsort(l);
+console.log(l2);
