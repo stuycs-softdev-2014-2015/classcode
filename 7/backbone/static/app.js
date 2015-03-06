@@ -1,10 +1,14 @@
 console.log("HELLO");
 
 var Place = Backbone.Model.extend({
+		onChange : function() {
+				console.log("Changed");
+		},
 		initialize : function(){
-				this.on("change",function() {
-						alert("CHANGED: "+this);
-				});
+				this.on("change",this.onChange);
+		},
+		destroy:function(){
+				this.off("change",this.onChange);
 		},
 		defaults: {
 				name : "Name goes here",
@@ -16,3 +20,5 @@ var Place = Backbone.Model.extend({
 				}
 		}
 });
+
+var p1 = new Place({name:"Terry's",rating:5});
