@@ -3,7 +3,7 @@ console.log("HELLO");
 var Place = Backbone.Model.extend({
 		initialize: function() {
 				this.on({"change":function() {
-						alert("Changed"+this)}});
+						alert("Changed"+this.toJSON())}});
 		},
 		defaults:{'name':'name goes here',
 							'rating':0},
@@ -13,3 +13,6 @@ var Place = Backbone.Model.extend({
 				}
 		}
 });
+
+var p1 = new Place({name:"Terry's", rating:5});
+var p2 = new Place({name:"Ferry's", rating:7});
