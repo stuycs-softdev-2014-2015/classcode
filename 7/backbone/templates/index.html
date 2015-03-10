@@ -4,11 +4,26 @@
 		<script src="/static/lib/jquery.min.js"></script>
 		<script src="/static/lib/lodash.js"></script>
 		<script src="/static/lib/backbone.js"></script>
+
+		<script type="text/template" id="place_template">
+			<tr>
+				<td> <%= name %> </td>
+				<td> <%= rating %> </td>
+				<td>Not a button</td>
+				<td><button class="up">up</button></td>
+				<td><button class="down">down</button></td>
+				<td><button class="del">del</button></td>
+			</tr>
+		</script>
+		
 	</head>
 	<body>
 		<h1>Hello</h1>
+		<button>Unrelated button</button>
+		<hr>
 		<table border="1" id="place">
 		</table>
+		
 		<script src="/static/app.js""></script>
 	</body>
 </html>
