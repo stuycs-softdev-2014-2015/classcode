@@ -1,0 +1,25 @@
+<!doctype>
+<html>
+	<head>
+		<script src="/static/lib/jquery.min.js"></script>
+		<script src="/static/lib/lodash.js"></script>
+		<script src="/static/lib/backbone.js"></script>
+
+		<script type="text/template" id="place_template">
+				<td> <%= name %> </td>
+				<td> <%= rating %> </td>
+				<td><button id="up">up</button></td>
+				<td><button id="down">down</button></td>
+		</script>
+		
+	</head>
+	<body>
+		<h1>Hello</h1>
+		<hr>
+
+		<table border="1" id="places">
+		</table>
+		
+		<script src="/static/multi.js""></script>
+	</body>
+</html>

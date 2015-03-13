@@ -1,0 +1,46 @@
+<!doctype>
+<html>
+	<head>
+		<script src="/static/lib/jquery.min.js"></script>
+		<script src="/static/lib/lodash.js"></script>
+		<script src="/static/lib/backbone.js"></script>
+
+		<script type="text/template" id="v_template">
+			<tr>
+				<td> <%= name %> </td>
+				<td> <%= rating %> </td>
+			</tr>
+			<tr>
+				<td><%= review %></td
+			</tr>
+		</script>
+		
+
+		<script type="text/template" id="e_template">
+			<tr>
+				<td> <%= name %> </td>
+				<td> <%= rating %> </td>
+				<td><button class="up">up</button></td>
+				<td><button class="down">down</button></td>
+			</tr>
+			<tr>
+				<td><textarea id="t"><%= review %></textarea></td>
+				<td><button id="change">Changed</button></td>
+			</tr>
+		</script>
+		
+	</head>
+	<body>
+		<h1>View only</h1>
+
+		<table border="1" id="v">
+		</table>
+		
+		<h1>Edit</h1>
+
+		<table border="1" id="e">
+		</table>
+		
+		<script src="/static/twoview.js""></script>
+	</body>
+</html>
