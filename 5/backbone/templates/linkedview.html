@@ -1,0 +1,42 @@
+<!doctype>
+<html>
+	<head>
+		<script src="/static/lib/jquery.min.js"></script>
+		<script src="/static/lib/lodash.js"></script>
+		<script src="/static/lib/backbone.js"></script>
+
+		<script type="text/template" id="v1_template">
+			<tr>
+				<td><%= name %></td><td><%= rating %></td>
+			</tr>
+			<tr>
+				<td><%= review %></td>
+			</tr>
+		</script>
+
+		<script type="text/template" id="v2_template">
+			<tr>
+				<td><%= name %></td><td><%= rating %></td>
+				<td><button id="up">up</button><button id="down">down</button>
+			</tr>
+			<tr>
+				<td><textarea class="t"><%= review %></textarea></td>
+				<td><button class="change">Change</button></td>
+			</tr>
+		</script>
+		
+		</head>
+	<body>
+
+		<h1>View one - display only</h1>
+
+		<table border="1" id="v1">
+		</table>
+
+		<h1>View two - edit</h1>
+		<table border="1" id="v2">
+		</table>
+
+		<script src="/static/linkedview.js""></script>
+	</body>
+</html>
