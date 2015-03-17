@@ -1,6 +1,6 @@
 console.log("HELLO");
 
-var PlaceView = Backbone.View.extend({
+var PView = Backbone.View.extend({
 		tagName:"tr",
 		template: _.template($("#place_template").html()),
 		events: {
@@ -33,39 +33,38 @@ var PlaceView = Backbone.View.extend({
 });
 
 
-var Place = Backbone.Model.extend({
-		initialize: function() {
-				this.on({"change":function() {
-						console.log("Changed"+this.toJSON())}});
-		},
-		defaults:{'name':'name goes here',
-							'rating':0},
-		validate:function(attrs,options){
-				if (isNaN(attrs.rating)){
-						return "Rating must be numeric";
-				}
+CView = Backbone.View.extend({
+		el:"#places",
+		render:function(){
+				this.$el.empty();
+				console.log("ZZ");
+				console.log(this.collection);
+				this.collection.each(function(i){
+						var v = new PView({model:i});
+						var x = v.render();
+						this.$el.append(x.$el);
+				},this);
 		}
+		
 });
 
-var MultiView = Backbone.View.extend({
-		el:"#places",
-		initialize:function(){
-				this.render();
-		},
-		render: function(){
-				this.$el.empty();
-				for (var i = 0; i < this.model.length; i++){
-						var v = new PlaceView({model:this.model[i]});
-						console.log(this.el);
-						this.$el.append(v.el);
-				}
+var Place = Backbone.Model.extend({});
 
-				return this;
+var Collection = Backbone.Collection.extend({
+		url:'places',
+		model : Place,
+		initialize : function(){
+				this.fetch();
+				this.on({'add':function() {
+						console.log("Added");
+				}});
 		}
 });
 
 var p1 = new Place({name:"Terry's", rating:5});
 var p2 = new Place({name:"Ferry's", rating:7});
-
-var c = [p1,p2];
-var cv = new MultiView({model:c});
+var c = new Collection();
+c.add([p1,p2]);
+var cv = new CView({collection:c});
+c.view = cv;
+cv.render();
