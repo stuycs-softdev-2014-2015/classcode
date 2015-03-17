@@ -1,25 +1,29 @@
 console.log("HELLO");
 
-var Place = Backbone.Model.extend({
-		showchange: function(){
-						console.log("Changing: "+this.toString());
-		},
-		initialize:function(){
-		},
-		destroy: function() {
-		},
-		defaults: {
-				name :"Place name",
-				rating:0
-		},
-		validate : function(attrs,options) {
-				if (isNaN(attrs.rating)){
-						return "need number";
-				}
+var Place = Backbone.Model.extend({});
+
+var Places = Backbone.Collection.extend({
+		Model : Place,
+		initialize: function(){
+				this.on("add",function(){
+						this.view.render();
+				});
 		}
 });
 
-var PlaceView = Backbone.View.extend({
+var CView = Backbone.View.extend({
+		el : "#places",
+		render : function(){
+				this.$el.empty();
+				var that=this;
+				this.collection.each(function (item){
+						var v = new PView({model:item});
+						var x = v.render();
+						that.$el.append(x.$el);
+				});
+		}
+});
+var PView = Backbone.View.extend({
 		tagName:"tr",
 		template	:  _.template($("#place_template").html()),
 		events:{
@@ -51,29 +55,15 @@ var PlaceView = Backbone.View.extend({
 
 });
 
-var MultiView = Backbone.View.extend({
-		el:"#places",
-		initialize : function(){
-				var that = this;
-
-				this.render();
-		},
-		render: function(){
-				this.$el.empty();
-				for (var i = 0 ; i < this.model.length; i++ ){
-						var v = new PlaceView({model:this.model[i]});
-						this.$el.append(v.$el);
-				}
-				return this;
-		}
-
-});
-
 
 var p1 = new Place({name:"Terry's",rating:5});
 var p2 = new Place({name:"Ferry's",rating:8});
-var v1 = new PlaceView({model:p1});
 
 
-var c = [p1,p2];
-var mv = new MultiView({model:c});
+var c = new Places();
+var cv = new CView({collection:c});
+c.view = cv;
+c.add([p1,p2]);
+
+
+cv.render();
