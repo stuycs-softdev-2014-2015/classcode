@@ -1,8 +1,8 @@
 
-Place = Backbone.Model.extend({});
+var Place = Backbone.Model.extend({});
 
 
-Collection = Backbone.Collection.extend({
+var Collection = Backbone.Collection.extend({
 		model:Place,
 		initialize:function() {
 				this.on({'add':function() {
@@ -12,7 +12,7 @@ Collection = Backbone.Collection.extend({
 		}
 });
 
-PView = Backbone.View.extend(
+var PView = Backbone.View.extend(
 		{
 				template: $("#place_template").html(),
 				tagName:"tr",
@@ -47,7 +47,7 @@ PView = Backbone.View.extend(
 				
 		}); 
 
-CView = Backbone.View.extend({
+var CView = Backbone.View.extend({
 		el:"#table",
 		events:{
 				"submit form#form":'addone'
@@ -69,16 +69,17 @@ CView = Backbone.View.extend({
 						var x = v.render();
 						that.$el.append(x.$el);
 				});
+				return this;
 		}
 });
 		
 
-p1 = new Place({name:"Terry's",rating:3});
-p2 = new Place({name:"Ferry's",rating:7});
+var p1 = new Place({name:"Terry's",rating:3});
+var p2 = new Place({name:"Ferry's",rating:7});
 
-c = new Collection();
+var c = new Collection();
 
-cv = new CView({collection:c});
+var cv = new CView({collection:c});
 c.view = cv;
 c.add([p1,p2]);
 
