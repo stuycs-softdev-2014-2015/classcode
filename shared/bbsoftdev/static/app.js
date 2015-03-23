@@ -1,8 +1,16 @@
 
-var Place = Backbone.Model.extend({});
+Place = Backbone.Model.extend({
+				initialize:function(){
+						this.on({
+								"change":function(){
+										console.log("Changed"+this);
+								}
+						});
+				}
+		});
 
 
-var Collection = Backbone.Collection.extend({
+Collection = Backbone.Collection.extend({
 		model:Place,
 		initialize:function() {
 				this.on({'add':function() {
@@ -12,7 +20,17 @@ var Collection = Backbone.Collection.extend({
 		}
 });
 
-var PView = Backbone.View.extend(
+p1 = new Place({name:"Terry's",
+					 rating:3
+					});
+p2 = new Place({name:"Ferry's",
+					 rating:7
+							 });
+
+c = new Collection();
+
+
+PView = Backbone.View.extend(
 		{
 				template: $("#place_template").html(),
 				tagName:"tr",
@@ -41,14 +59,15 @@ var PView = Backbone.View.extend(
 						},
 						"click .delete":function(e){
 								this.remove();
+								this.render();
 						}
 				}
 
 				
 		}); 
 
-var CView = Backbone.View.extend({
-		el:"#table",
+CView = Backbone.View.extend({
+		el:"body",
 		events:{
 				"submit form#form":'addone'
 		},
@@ -62,24 +81,20 @@ var CView = Backbone.View.extend({
 				console.log(m);
 		},
 		render:function(){
-				this.$el.empty();
-				var that=this;
+				$("#table").empty();
 				this.collection.each(function(i){
 						var v = new PView({model:i});
 						var x = v.render();
-						that.$el.append(x.$el);
+						//console.log(x);
+						$("#table").append(x.$el);
+
 				});
-				return this;
 		}
 });
 		
-
-var p1 = new Place({name:"Terry's",rating:3});
-var p2 = new Place({name:"Ferry's",rating:7});
-
-var c = new Collection();
-
-var cv = new CView({collection:c});
+cv = new CView({collection:c});
 c.view = cv;
+
 c.add([p1,p2]);
+pv = new PView({model:p1});
 

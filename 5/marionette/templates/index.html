@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+<script type="text/template" id="place-template">
+	<td><%- name %></td><td><%- rating%></td>
+	<td><button id="up">up</button></td>
+	<td><button id="down">down</button></td>
+	<td><button id="delete">delete</button></td>
+</script>
+
+<script type="text/template" id="first-template">
+	<h2>This is the first template</h2>
+	<p>It's just comprised of static stuff</p>
+	<blockquote>
+		This is a quote
+	</blockquote>
+</script>
+
+<div class="pure-g">
+	<div class="pure-u-1-12"></div>
+	<div class="pure-u-5-6">
+		<h1>The Marionette Page</h1>
+
+		<hr>
+		<div id="first-region">
+			This is the first region
+		</div>
+		<hr>
+		<table class="pure-table pure-table-bordered" id="second-region">
+		</table>
+		<hr>
+		<div id="third-region">
+			this is the third region
+		</div>
+		<hr>
+		<div id="fourth-region">
+			this is the fourth region
+		</div>
+	</div>
+	</div>
+</div>
+
+<script src="static/app.js"></script>
+{% endblock body %}
