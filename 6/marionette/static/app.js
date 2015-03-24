@@ -17,6 +17,9 @@ App.on("start",function(){
 
 		var placeview = new App.PlaceView({model:p1});
 		App.secondRegion.show(placeview);
+
+		var placesview = new App.PlacesView({collection:c});
+		App.thirdRegion.show(placesview);
 		
 });
 
@@ -25,11 +28,28 @@ App.StaticView = Marionette.ItemView.extend({
 });
 App.PlaceView = Marionette.ItemView.extend({
 		template : "#place-template",
-		tagName : "tr"
+		tagName : "tr",
+		events : {
+				"click #delete" : function(){this.remove();}
+		},
+		modelEvents : {
+				"change" : function() { this.render(); }
+		}
+		
+});
+
+
+App.PlacesView = new Marionette.CollectionView.extend({
+		childView : App.PlaceView
 });
 
 var Place = Backbone.Model.extend();
-var p1 = new Place({name:"Terry's",rating:5});
+var Places = Backbone.Collection.extend({
+		model:Place
+});
 
+var p1 = new Place({name:"Terry's",rating:5});
+var p2 = new Place({name:"Ferry's",rating:8});
+var c = new Places([p1,p2]);
 
 App.start();
