@@ -20,12 +20,15 @@ App.on("start",function(){
 
 		var placesview = new App.PlacesView({collection:c});
 		App.thirdRegion.show(placesview);
-		
+
+		var compview = new App.CompView({collection:c});
+		App.fourthRegion.show(compview);
 });
 
 App.StaticView = Marionette.ItemView.extend({
 		template : "#static-template"
 });
+
 App.PlaceView = Marionette.ItemView.extend({
 		template : "#place-template",
 		tagName : "tr",
@@ -39,8 +42,25 @@ App.PlaceView = Marionette.ItemView.extend({
 });
 
 
-App.PlacesView = new Marionette.CollectionView.extend({
+App.PlacesView = Marionette.CollectionView.extend({
 		childView : App.PlaceView
+});
+
+App.CompView = Marionette.CompositeView.extend({
+		template : "#composite-template",
+		childView : App.PlaceView,
+		childViewContainer : "tbody",
+		events : {
+				"click #add" : function() {
+						var n = $("#newname").val();
+						if (n.length > 0){
+								this.collection.add(new Place({name:n,rating:0}));
+								this.collection.comparator="name";
+								this.collection.sort();
+								$("#newname").val("");
+						}
+				}
+		}
 });
 
 var Place = Backbone.Model.extend();

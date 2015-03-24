@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% block body %}
 
+<script type="text/template" id="composite-template">
+	<h3> All the places</h3>
+	New place name: <input id="newname">
+	<button class="pure-button pure-button-primary" id="add">Add!</button>
+	<p>
+		<table class="pure-table pure-table-bordered pure-table-striped">
+			<thead>
+				<tr><th>Name</th><th>Rating</th><th colspan="3">Controls</th></tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+</script>
+
 <script type="text/template" id="place-template">
 	<td><%- name%></td><td><%- rating %></td>
 	<td><button id="up">up</button></td>
@@ -25,9 +39,7 @@
 		<hr>
 		<table class="pure-table pure-table-bordered" id="second-region"></table>
 		<hr>
-		<div id="third-region">
-			The third region
-		</div>
+		<table class="pure-table pure-table-bordered" id="third-region"></table>
 		<hr>
 		<div id="fourth-region">
 			The fourth region
