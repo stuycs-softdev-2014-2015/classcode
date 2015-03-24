@@ -2,6 +2,22 @@
 {% block body %}
 
 
+<script type="text/template" id="composite-template">
+	<h2>This is the header stuff</h2>
+	We might have some stuff on top including maybe user interface stuff:
+	<p>
+	New Place name: <input id="newname"><button class="pure-button" id="add">Add</button>
+	<table class="pure-table pure-table-bordered">
+		<thead>
+			<tr><th>Name</th><th>Rating</th><th colspan="3">Conrtols</th></tr>
+		</thead>
+		<tbody>
+			<!-- The Place itemviews will go here -->
+		</tbody>
+	</table>
+	<h3>And we might have some footer stuff as well</h3>
+</script>
+
 <script type="text/template" id="place-template">
 	<td><%- name %></td><td><%- rating%></td>
 	<td><button id="up">up</button></td>
@@ -30,9 +46,8 @@
 		<table class="pure-table pure-table-bordered" id="second-region">
 		</table>
 		<hr>
-		<div id="third-region">
-			this is the third region
-		</div>
+		<table class="pure-table pure-table-bordered" id="third-region">
+		</table>
 		<hr>
 		<div id="fourth-region">
 			this is the fourth region
