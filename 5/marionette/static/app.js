@@ -13,7 +13,7 @@ App.addRegions({
 App.on("start",function() {
 		console.log("Started");
 		var firstView = new App.FirstView();
-		App.firstRegion.show(firstView);
+		App.fourthRegion.show(firstView);
 
 		var placeview = new App.PlaceView({model:p1});
 		App.secondRegion.show(placeview);
@@ -21,8 +21,10 @@ App.on("start",function() {
 		var placesview = new App.PlacesView({collection:c});
 		App.thirdRegion.show(placesview);
 
-		var compositeview = new App.CompositeView({collection:c});
-		App.fourthRegion.show(compositeview);
+		var compositeview = new App.CompositeView({model:person, collection:c});
+		App.firstRegion.show(compositeview);
+
+		Backbone.history.start();
 });
 
 App.FirstView = Marionette.ItemView.extend({
@@ -63,10 +65,38 @@ App.CompositeView = Marionette.CompositeView.extend({
 		}
 });
 
+var myController = Marionette.Controller.extend({
+		oneRoute : function(){
+				console.log("OneRoute");
+				App.firstRegion.show(new App.PlaceView({model:p1}));
+				App.secondRegion.show(new App.PlaceView({model:p1}));
+		},
+		twoRoute : function(){
+				App.firstRegion.show(new App.PlaceView({model:p2}));
+				App.secondRegion.show(new App.PlaceView({model:p2}));
+				console.log("TwoRoute");
+		},
+});
+
+App.controller = new myController();
+App.router = new Marionette.AppRouter({
+		controller: App.controller,
+		appRoutes:{
+				"one":"oneRoute",
+				"two":"twoRoute"
+		}
+});
+
 var Place = Backbone.Model.extend({});
 var Places = Backbone.Collection.extend({
 		model:Place
 });
+
+var Person = Backbone.Model.extend({});
+var person = new Person({first:'Archimedes',
+												 last:'Zzzzyyyyyxxx',
+												 stars:5
+												});
 
 var p1 = new Place({name:"Terry's",rating:5});
 var p2 = new Place({name:"Ferry's",rating:8});
