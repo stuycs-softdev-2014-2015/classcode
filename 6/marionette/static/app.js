@@ -13,7 +13,7 @@ App.addRegions({
 App.on("start",function(){
 		console.log("Starting");
 		var staticview = new App.StaticView();
-		App.firstRegion.show(staticview);
+		App.fourthRegion.show(staticview);
 
 		var placeview = new App.PlaceView({model:p1});
 		App.secondRegion.show(placeview);
@@ -21,8 +21,11 @@ App.on("start",function(){
 		var placesview = new App.PlacesView({collection:c});
 		App.thirdRegion.show(placesview);
 
-		var compview = new App.CompView({collection:c});
-		App.fourthRegion.show(compview);
+		var compview = new App.CompView({model:person,collection:c});
+		App.firstRegion.show(compview);
+
+		Backbone.history.start();
+
 });
 
 App.StaticView = Marionette.ItemView.extend({
@@ -50,6 +53,9 @@ App.CompView = Marionette.CompositeView.extend({
 		template : "#composite-template",
 		childView : App.PlaceView,
 		childViewContainer : "tbody",
+		modelEvents : {
+				"change" : function() { this.render(); }
+		},
 		events : {
 				"click #add" : function() {
 						var n = $("#newname").val();
@@ -63,10 +69,44 @@ App.CompView = Marionette.CompositeView.extend({
 		}
 });
 
+
+var myController = Marionette.Controller.extend({
+		default : function(){
+		var compview = new App.CompView({model:person,collection:c});
+		App.firstRegion.show(compview);
+		},
+		oneRoute : function() {
+				App.firstRegion.show(new App.PlaceView({model:p1}));
+				App.secondRegion.show(new App.PlaceView({model:p2}));
+		},
+		twoRoute : function() {
+				App.firstRegion.show(new App.PlaceView({model:p2}));
+				App.secondRegion.show(new App.PlaceView({model:p1}));
+																					 
+		} 
+});
+
+App.controller = new myController();
+
+App.router = new Marionette.AppRouter({
+		controller : App.controller,
+		appRoutes : {
+				"/" : "default",
+				one : "oneRoute",
+				two : "twoRoute"
+		}
+});
+
+
 var Place = Backbone.Model.extend();
 var Places = Backbone.Collection.extend({
 		model:Place
 });
+
+var Person = Backbone.Model.extend();
+var person = new Person({first:'Dennis',
+												 last:'Clyde-Sinclair',
+												 stars:8});
 
 var p1 = new Place({name:"Terry's",rating:5});
 var p2 = new Place({name:"Ferry's",rating:8});
