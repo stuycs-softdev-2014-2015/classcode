@@ -3,6 +3,13 @@
 
 <script type="text/template" id="composite-template">
 	<h2>All the places</h2>
+	<h3><%= last %>, <%= first %></h3>
+	<h4>Stars: <%= stars %></h4>
+	<h3>
+		<% for (var i = 0 ; i < stars ; i ++) { %>
+		 &#9733;
+		<% } %>
+	</h3>
 	New Place: <input id="newname">
 	<button class="pure-button pure-button-primary" id="add">Add!!</button>
 	<table class="pure-table pure-table-bordered">
@@ -33,6 +40,9 @@
 	<div class="pure-u-1-12"></div>
 	<div class="pure-u-5-6">
 		<h1>Marionette stuff</h1>
+		<a href="#one"><button class="pure-button pure-button-primary">one</button></a>
+		<a href="#two"><button class="pure-button pure-button-primary">two</button></a>
+
 		<div id="first-region">
 			First region
 		</div>
