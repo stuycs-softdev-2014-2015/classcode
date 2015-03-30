@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<script type="text/template" id="place_template">
+	<td><%- name %></td> <td><%- rating %></td>
+	<td><button class="up">up</button></td>
+	<td><button class="down">down</button></td>
+	<td><button class="delete">delete</button></td>
+</script>
+
+
+<div class="pure-g">
+	<div class="pure-u-1-12" ></div>
+	<div class="pure-u-11-12">
+
+		<h1>Index</h1>
+<div id="holder">
+	<form id="form">
+	Place:<input type="text" id="place"">
+	<button class="add">add</button>
+	</form>
+
+		<table id="table" class="pure-table">
+		</table>
+</div>
+
+<ol id="list">
+</ol>
+	</div>
+</div>
+
+<script src="static/bb.js"></script>
+
+{% endblock %}
+

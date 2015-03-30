@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<script type="text/template" id="place_template">
+	<td class="editable" contenteditable="true"><%- name %></td> <td><%- rating %></td>
+	<td><button class="up">up</button></td>
+	<td><button class="down">down</button></td>
+	<td><button class="delete">delete</button></td>
+</script>
+
+<script type="text/template" id="cv_template">
+	Place:<input type="text" id="place"">
+	<div class="pure-button add" id="add">add</div>
+
+		<table id="table" class="pure-table pure-table-striped">
+		</table>
+</script>
+
+<div class="pure-g">
+	<div class="pure-u-1-12" ></div>
+	<div class="pure-u-11-12">
+
+		<h1>Index</h1>
+<div id="holder">
+</div>
+
+<ol id="list">
+</ol>
+	</div>
+</div>
+
+<script src="static/m.js"></script>
+
+{% endblock %}
+
